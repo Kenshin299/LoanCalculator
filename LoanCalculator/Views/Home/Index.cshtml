@@ -1,22 +1,41 @@
-﻿<div class="container-fluid w-50">
+﻿@model LoanCalculator.Models.PrestamoViewModel
+
+<div class="container-fluid w-50">
     <h3>
         Calculadora de Préstamos
     </h3>
     <form asp-action="DeterminarSigno" class="form">
         <div class="form-group">
             <label for="Monto">Monto del préstamo:</label>
-            <input type="text" class="form-control" id="monto" name="Monto" required>
+            @Html.TextBoxFor(model => model.Monto, new { @class = "form-control" })
             <label for="Tipo">Tipo de préstamo:</label>
-            <select class="form-control" id="tipo" name="Tipo" required>
-                <option value="personal">Personal</option>
-                <option value="automóvil">Automóvil</option>
-                <option value="hipotecario">Hipotecario</option>
-            </select>
+            @Html.DropDownListFor(model => model.TipoPrestamo, Model.TiposPrestamo, new { @class = "form-control", @id = "Tipo", @change = "onTipoChange()" })
             <label for="Tasa">Tasa de intéres anual (%):</label>
-            <input type="number" class="form-control" id="tasa" name="Tasa" readonly>
+            @Html.TextBoxFor(model => model.Tasa, new { @class = "form-control", @readonly = "readonly", @id = "Tasa" })
             <label for="Cuotas">Cantidad de cuotas mensuales:</label>
-            <select class="form-control" id="cuotas" name="Cuotas" required></select>
+            @Html.DropDownListFor(model => model.Plazo, Model.Plazos, new { @class = "form-control", @id = "Cuotas" })
         </div>
         <button type="submit" class="btn btn-primary">Calcular</button>
     </form>
 </div>
+
+<script>
+    function onTipoChange() {
+        var selectedTipoPrestamo = document.getElementById("Tipo").value;
+        const tasaInteresInput = document.getElementById("Tasa");
+
+        switch (selectedTipoPrestamo) {
+            case "Personal":
+                tasaInteresInput.innerText = '22%';
+                break;
+            case "Automóvil":
+                tasaInteresInput.innerText = '12%';
+                break;
+            case "Hipotecario":
+                tasaInteresInput.innerText = ('8%');
+                break;
+            default:
+                tasaInteresInput.innerText = '';
+        }
+    }
+</script>
