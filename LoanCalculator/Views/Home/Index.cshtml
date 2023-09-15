@@ -1,0 +1,22 @@
+﻿<div class="container-fluid w-50">
+    <h3>
+        Calculadora de Préstamos
+    </h3>
+    <form asp-action="DeterminarSigno" class="form">
+        <div class="form-group">
+            <label for="Monto">Monto del préstamo:</label>
+            <input type="text" class="form-control" id="monto" name="Monto" required>
+            <label for="Tipo">Tipo de préstamo:</label>
+            <select class="form-control" id="tipo" name="Tipo" required>
+                <option value="personal">Personal</option>
+                <option value="automóvil">Automóvil</option>
+                <option value="hipotecario">Hipotecario</option>
+            </select>
+            <label for="Tasa">Tasa de intéres anual (%):</label>
+            <input type="number" class="form-control" id="tasa" name="Tasa" readonly>
+            <label for="Cuotas">Cantidad de cuotas mensuales:</label>
+            <select class="form-control" id="cuotas" name="Cuotas" required></select>
+        </div>
+        <button type="submit" class="btn btn-primary">Calcular</button>
+    </form>
+</div>
