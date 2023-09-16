@@ -1,0 +1,20 @@
+﻿
+@model LoanCalculator.Models.PrestamoViewModel
+
+@{
+    ViewData["Title"] = "Resultado";
+}
+
+
+<div class="container-fluid w-50 d-flex align-content-center flex-column align-items-center">
+    <h1 class="mb-3">Cuotas mensuales a pagar son:</h1>
+    @{
+        string formattedResult = string.Format("${0:#,0.00}", Model.Resultado);
+        if (formattedResult.StartsWith("$0"))
+        {
+            formattedResult = "$" + formattedResult.Substring(2);
+        }
+    }
+    <h3 class="p-3 border border-2 border-primary rounded">✨@formattedResult✨</h3>
+</div>
+

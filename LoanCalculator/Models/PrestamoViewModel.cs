@@ -9,7 +9,7 @@ namespace LoanCalculator.Models
         public string TipoPrestamo { get; set; }
         public List<SelectListItem> TiposPrestamo { get; set; }
         public int Plazo { get; set; }
-        public int Tasa { get; set; }
+        public decimal Tasa { get; set; }
         public List<SelectListItem> Plazos { get; set; }
         public decimal? Resultado { get; set; }
     }
